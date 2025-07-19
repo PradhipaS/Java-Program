@@ -1,6 +1,5 @@
-//package demo;
-import java.util.Scanner;
-import java.util.Stack;
+
+
 /*Given a sequence of integers, determine whether it is a valid stack pop sequence for some push sequence of the integers 1 to n in increasing order. Assume the push sequence is always 1 to n in order. A sequence is valid if it can be achieved by pushing the numbers 1 to n in order onto a stack and popping at arbitrary points.
 
 Input Format:
@@ -23,8 +22,9 @@ Sample Output:
 
 YES
 */
-
-
+package demo;
+import java.util.Scanner;
+import java.util.Stack;
 public class Stack1 {
 	public static void main(String args[])
 	{
