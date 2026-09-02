@@ -8,6 +8,8 @@
 // Sample Output
 // 0 1 2 3 4
 import java.util.Scanner;
+//import java.util.*;
+
 
 public class Info1 {
     public static int removeDuplicates(int[] nums) {
