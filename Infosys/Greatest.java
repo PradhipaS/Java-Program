@@ -7,35 +7,24 @@
 import java.util.*;
 public class Greatest{
     public static void main(String[] args) {
-     
-        int[] arr = {4, 5, 2, 25};
-        System.out.println(Arrays.toString(findNGE(arr))); 
-        // Output: [5, 25, 25, -1]
-    }
-    public static int[] findNGE(int[] arr) {
-        int n = arr.length;
-        int[] result = new int[n];
-        Stack<Integer> stack = new Stack<>();
-
-        // Traverse the array from right to left
-        for (int i = n - 1; i >= 0; i--) {
-            // Pop elements smaller than or equal to the current element
-            while (!stack.isEmpty() && stack.peek() <= arr[i]) {
-                stack.pop();
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int [] arr= new int[n];
+        for(int i=0;i<n;i++){
+            arr[i]=sc.nextInt();
+        }int [] ans=new int[n];
+        Stack <Integer>res= new Stack<>();
+        for(int i=n-1;i>=0;i--)
+        {
+        while(!res.isEmpty() && res.peek()<=arr[i])
+            {
+                res.pop();
             }
-
-            // If stack is empty, no greater element exists to the right
-            result[i] = stack.isEmpty() ? -1 : stack.peek();
-
-            // Push current element into the stack
-            stack.push(arr[i]);
+           ans[i]=res.isEmpty()?-1:res.peek();
+           res.push(arr[i]);
         }
-        return result;
-    }
-
- 
-}
-
-    }
-
-}
+        for(int i=0;i<n;i++)
+        {
+            System.out.print(ans[i]+" ");
+        }
+    }}
