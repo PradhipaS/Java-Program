@@ -59,6 +59,7 @@ import java.util.*;
 
 public class Oblications {
 
+
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
@@ -73,53 +74,36 @@ public class Oblications {
             D[i] = sc.nextInt();
         }
 
-        Arrays.sort(D);
-
-        int answer = 0;
-
-        /*
-         * Vacation before the first obligation.
-         */
-        answer = Math.max(answer, D[0] - 1);
-
-        /*
-         * Vacation after the last obligation.
-         */
-        answer = Math.max(answer, N - D[M - 1]);
-
-        /*
-         * Cancel up to K obligations.
-         *
-         * If we cancel obligations from i to j,
-         * then the vacation is between:
-         *
-         * D[i-1] and D[j+1]
-         */
-        for (int i = 0; i < M; i++) {
-
-            int j = Math.min(M - 1, i + K - 1);
-
-            int leftDay;
-
-            if (i == 0) {
-                leftDay = 0;
-            } else {
-                leftDay = D[i - 1];
-            }
-
-            int rightDay;
-
-            if (j == M - 1) {
-                rightDay = N + 1;
-            } else {
-                rightDay = D[j + 1];
-            }
-
-            int vacation = rightDay - leftDay - 1;
-
-            answer = Math.max(answer, vacation);
+        // If all obligations can be cancelled
+        if (K >= M) {
+            System.out.println(N);
+            return;
         }
 
-        System.out.println(answer);
+        Arrays.sort(D);
+
+        // Add sentinels
+        int[] arr = new int[M + 2];
+
+        arr[0] = 0;
+
+        for (int i = 0; i < M; i++) {
+            arr[i + 1] = D[i];
+        }
+
+        arr[M + 1] = N + 1;
+
+        int maxVacation = 0;
+
+        // Cancel K consecutive obligations
+        for (int i = 0; i <= M - K; i++) {
+
+            int vacation =
+                    arr[i + K + 1] - arr[i] - 1;
+
+            maxVacation = Math.max(maxVacation, vacation);
+        }
+
+        System.out.println(maxVacation);
     }
 }
