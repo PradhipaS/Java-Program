@@ -20,7 +20,7 @@
 
 import java.util.*;
 
-public class MonsterSequence {
+public class I2 {
     // Class to represent a Monster
     static class Monster implements Comparable<Monster> {
         int power;
